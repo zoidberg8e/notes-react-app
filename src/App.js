@@ -6,8 +6,11 @@ import Note from './components/Note';
 import axios from 'axios';
 import urlFor from './helpers/urlFor';
 import Flash from './components/Flash';
+// 
+
 
 class App extends Component {
+  
   constructor() {
     super();
     this.state = {
@@ -18,7 +21,7 @@ class App extends Component {
       error: ''
     };
   }
-
+ 
   toggleNote = () => {
     this.setState({
       showNote: ! this.state.showNote,
@@ -52,9 +55,9 @@ class App extends Component {
     .catch((err) => {
       const { errors } = err.response.data;
       if (errors.content) {
-        this.setState({ error: "Missing Note Content!" });
+        this.setState({ error: "fülle dein NOTIZ aus du arsch!" });
       } else if (errors.title) {
-        this.setState({ error: "Missing Note Title!" });
+        this.setState({ error: "Du bist dumm und hast du dein Titel vergessen!" });
       }
     });
   }
@@ -125,6 +128,7 @@ class App extends Component {
       </div>
     );
   }
+  
 }
 
 export default App;

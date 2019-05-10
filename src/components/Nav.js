@@ -6,7 +6,7 @@ class Nav extends Component {
     
     return (
       <div className="nav-container">
-        <div className="nav-logo">Notes</div>
+        <div className="nav-logo">Notechan</div>
         <div className="nav-button" onClick={() => toggleNote()} >
           { showNote ? 'Cancel' :  '+ Note' }
         </div> 
