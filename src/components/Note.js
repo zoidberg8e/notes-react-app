@@ -5,7 +5,7 @@ class Note extends Component {
     e.preventDefault();
     const formData = {
       title: this.title.value,
-      content: this.content.value
+      body: this.content.value
     };
     this.props.submitNote(formData, this.props.note.id);
   }
