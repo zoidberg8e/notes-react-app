@@ -54,7 +54,7 @@ class App extends Component {
     .then((res) => this.setState({ showNote: false }) )
     .catch((err) => {
       const { errors } = err.response.data;
-      if (errors.content) {
+      if (errors.body) {
         this.setState({ error: "fülle dein NOTIZ aus du arsch!" });
       } else if (errors.title) {
         this.setState({ error: "Du bist dumm und hast du dein Titel vergessen!" });
@@ -67,33 +67,6 @@ class App extends Component {
     axios.delete(urlFor(`note/${id}`) )
     .then((res) => this.setState({ notes: newNotesState }) )
     .catch((err) => console.log(err.response.data) );
-  }
-
-  showTagForm = () => {
-    this.setState({ newTag: true });
-  }
-
-  closeTagForm = () => {
-    this.setState({ newTag: false });
-  }
-  
-  submitTag = (data, noteId) => {
-    axios.post(urlFor(`note/${noteId}/tags`), data)
-    .then((res) => this.getNote(noteId) )
-    .catch((err) => {
-      const { errors } = err.response.data;
-      if (errors.name) {
-        this.setState({ error: "Missing Tag Name!" })
-      } else if (errors.title) {
-
-      }
-    });
-  }
-
-  deleteTag = (noteId, id) => {
-    axios.delete(urlFor(`/tags/${id}`))
-    .then((res) => this.getNote(noteId) )
-    .catch((err) => console.log(err.response.body))
   }
 
   resetError = () => {

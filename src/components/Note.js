@@ -5,58 +5,19 @@ class Note extends Component {
     e.preventDefault();
     const formData = {
       title: this.title.value,
-      body: this.content.value
+      body: this.body.value
     };
     this.props.submitNote(formData, this.props.note.id);
   }
 
-  onTagSubmit(e) {
-    e.preventDefault();
-    const formData = {
-      name: this.name.value
-    }
-    this.props.submitTag(formData, this.props.note.id)
-    this.props.closeTagForm();
-  }
-  
-  renderTagForm(note) {
-    if ( note.id !== undefined) {
-      if(!this.props.newTag) {
-        return (
-          <span>
-            Tag your note:
-            <i 
-              className="tag-button material-icons"
-              onClick={() => this.props.showTagForm()}
-            >
-              add circle
-            </i>
-          </span>
-        );
-      } else {
-        return (
-          <form onSubmit={(e) => this.onTagSubmit(e)}>
-            <input
-              className="tag-input"
-              type="text"
-              placeholder="Tag Name..."
-              ref={(input) => this.name = input}
-            />
-          </form>
-        );
-      }
-    }
-  }
-
   render() {
-    const { note, closeTagForm } = this.props;
+    const { note } = this.props;
     return(
       <div className="note-container">
-        <h2>Edit This Note</h2>
+        <h2>Create a new Note just to remember how important some life questions are</h2>
         <form
           className="note-form"
           onSubmit={(e) => this.onSubmit(e)}
-          onClick={() => closeTagForm()}
         >
           <div className="note-title">
             <input
@@ -71,8 +32,8 @@ class Note extends Component {
             <textarea
               className="note-textarea"
               placeholder="Type Here..."
-              defaultValue={note.content}
-              ref={(input) => this.content = input}
+              defaultValue={note.body}
+              ref={(input) => this.body = input}
             />
           </div>
           <input className="note-button" type="submit" value="Submit" />
