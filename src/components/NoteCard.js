@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class NoteCard extends Component {
   render() {
-    const { note, getNote, deleteNote } = this.props;
+    const { note, deleteNote } = this.props;
     return(
       <div className="note-card-container">
         <div className="note-card-title">
